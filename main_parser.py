@@ -14,13 +14,18 @@ try:
 except:
     logger.warning("Парсинг не удался")
 
-with open('data_parse.txt', 'w+') as file:
-    file_read = file.read()
+with open('data_parse.txt', 'w+') as save_txt:
+    file_read = save_txt.read()
     for lines in json_list:
-        file.write(f' Назва товару - {lines["title"]}''\n'
+        save_txt.write(f' Назва товару - {lines["title"]}''\n'
                    f' Артикль товару (з магазину) - {lines["article"]}''\n'
                    f' Розміри  - {lines["sizes"][0]["size"]}''\n'
                    f' Ціна  - {lines["price"]} грн''\n'
                    f' Ціна без знижки - {lines["priceOld"]} грн''\n'
                    f' Ціна Долар ($) - {lines["priceUSD"]} $''\n'
                    f' Фото товару  - {lines["mainImage"]["origin"]}''\n ' + 2 * "_____" '\n')
+    logger.info("Данные в  txd записаны")
+
+with open('data.json', 'w') as save_js:
+    json.dump(json_list, save_js,indent=2)
+    logger.info("Данные в  json записаны")
