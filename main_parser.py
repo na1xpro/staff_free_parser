@@ -1,13 +1,11 @@
-import lxml.html
 from loguru import logger
 from proxy_auth import proxies
 from cfg_main_constants import headers
-from cfg_main_constants import name_file_json,name_file_txt
+from cfg_main_constants import name_file_json, name_file_txt
 from cfg_main_constants import name_category_link
 from lxml import html
 import requests
 import json
-
 
 
 def parse_diskounts():
@@ -56,8 +54,7 @@ def parse_tracksuits_man(name_category):
 
     with open(name_file_json[name_category], 'w') as file:
         for name, size, link, price in zip(name_commodity, size_commodity, link_commodity, price_commodity):
-            file.write(json.dumps(['product', {'name':name,
-                                           "price":price,
-                                           "size": size,
-                                           "link":link}],indent=2))
-
+            file.write(json.dumps(['product', {'name': name,
+                                               "price": price,
+                                               "size": size,
+                                               "link": link}], indent=2))

@@ -4,8 +4,8 @@ from cfg_main_constants import name_file_json, name_file_txt
 import config
 import telebot
 
-
 bot = telebot.TeleBot(config.TOKEN)
+
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
